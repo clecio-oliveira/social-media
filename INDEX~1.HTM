@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Social Media & Notifications Calendar</title>
+<style>
+  :root{
+    --bg:#f4f5f7;
+    --card:#ffffff;
+    --text:#1c1e21;
+    --muted:#65676b;
+    --accent:#0866ff;
+    --border:#e4e6eb;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    padding:32px 16px 64px;
+  }
+  h1{
+    text-align:center;
+    font-size:28px;
+    margin:0 0 8px;
+  }
+  .subtitle{
+    text-align:center;
+    color:var(--muted);
+    margin:0 0 8px;
+    font-size:15px;
+  }
+  .edit-hint{
+    text-align:center;
+    color:var(--muted);
+    margin:0 0 40px;
+    font-size:12.5px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+    gap:24px;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 1px 3px rgba(0,0,0,0.06);
+    display:flex;
+    flex-direction:column;
+  }
+  .card img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    display:block;
+    background:#f0f0f0;
+  }
+  .card-body{
+    padding:16px 18px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    flex:1;
+  }
+  .card-title{
+    font-weight:600;
+    font-size:16px;
+    line-height:1.35;
+  }
+  .card-text{
+    font-size:14px;
+    line-height:1.5;
+    color:#333;
+  }
+  .card-link{
+    font-size:13px;
+    color:var(--accent);
+    text-decoration:none;
+    word-break:break-all;
+  }
+  .card-link:hover{
+    text-decoration:underline;
+  }
+  .hashtags{
+    font-size:13px;
+    color:var(--accent);
+    margin-top:auto;
+    padding-top:6px;
+    border-top:1px solid var(--border);
+  }
+  .update-list{
+    margin:0;
+    padding-left:18px;
+    font-size:13.5px;
+    line-height:1.6;
+  }
+  .update-list li{margin-bottom:6px;}
+  .update-list a{color:var(--accent); text-decoration:none;}
+  .update-list a:hover{text-decoration:underline;}
+  .badge{
+    display:inline-block;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    color:#fff;
+    background:var(--accent);
+    padding:3px 8px;
+    border-radius:6px;
+    width:fit-content;
+  }
+  [contenteditable="true"]{
+    outline:none;
+    border-radius:4px;
+    transition:background .15s ease;
+  }
+  [contenteditable="true"]:hover{
+    background:#f7f9fc;
+  }
+  [contenteditable="true"]:focus{
+    background:#fffbe6;
+    box-shadow:0 0 0 2px #ffe58f;
+  }
+  .reset-bar{
+    max-width:1200px;
+    margin:0 auto 16px;
+    text-align:right;
+  }
+  .reset-bar button{
+    font-size:12px;
+    color:var(--muted);
+    background:none;
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:5px 10px;
+    cursor:pointer;
+  }
+  .reset-bar button:hover{
+    background:#f0f0f0;
+  }
+</style>
+</head>
+<body>
+
+<h1>Social Media &amp; Notifications Calendar</h1>
+<p class="subtitle">Time.ly — posts programados</p>
+<p class="edit-hint">Clique em qualquer texto do card para editar. As alterações ficam salvas neste navegador.</p>
+
+<div class="reset-bar">
+  <button type="button" onclick="if(confirm('Restaurar todos os textos originais?')){localStorage.removeItem('smcEdits');location.reload();}">Restaurar textos originais</button>
+</div>
+
+<div class="grid">
+
+  <div class="card">
+    <img src="images/image5.jpg" alt="New Timely features">
+    <div class="card-body">
+      <span class="badge">Product Update</span>
+      <div class="card-title" contenteditable="true" data-edit-id="pu-title">🚀 New Timely features are here!</div>
+      <ul class="update-list" contenteditable="true" data-edit-id="pu-list">
+        <li>⏳ <a href="https://time.ly/blog/product-update-july-2026/#h-1-waiting-list-exclusive-access" target="_blank">Waiting List Exclusive Access</a> – Restrict ticket purchases to only eligible waiting list users</li>
+        <li>💰 <a href="https://time.ly/blog/product-update-july-2026/#h-2-nbsp-tax-options-for-membership-plans" target="_blank">Membership tax options</a> – Apply one or more taxes to Membership plans</li>
+        <li>📄 <a href="https://time.ly/blog/product-update-july-2026/#h-3-new-document-upload-fields-for-events" target="_blank">Document uploads for Events</a> – Collect contracts, permits, and other files during event creation</li>
+      </ul>
+      <a class="card-link" href="https://time.ly/blog/product-update-july-2026/" target="_blank">👉 Read the full update: time.ly/blog/product-update-july-2026</a>
+      <div class="hashtags" contenteditable="true" data-edit-id="pu-tags">#ProductUpdate #EventManagement #VenueManagement #Time.ly</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/community-management.jpg" alt="Community Management">
+    <div class="card-body">
+      <span class="badge">Blog</span>
+      <div class="card-title" contenteditable="true" data-edit-id="cm-title">🤝 What is Community Management?</div>
+      <div class="card-text" contenteditable="true" data-edit-id="cm-text">Community management connects events, memberships, bookings, and payments into one seamless experience. See how organizations boost engagement, cut admin work, and build stronger long-term relationships.</div>
+      <a class="card-link" href="https://time.ly/blog/what-is-community-management-definition-benefits-examples/" target="_blank">time.ly/blog/what-is-community-management-definition-benefits-examples</a>
+      <div class="hashtags" contenteditable="true" data-edit-id="cm-tags">#CommunityManagement #EventManagement #MembershipManagement #Time.ly</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/ai-in-events.jpg" alt="AI in Events">
+    <div class="card-body">
+      <span class="badge">Blog</span>
+      <div class="card-title" contenteditable="true" data-edit-id="ai-title">🤖 25 Clever Ways to Use AI in Events</div>
+      <div class="card-text" contenteditable="true" data-edit-id="ai-text">From AI-generated event descriptions to smart scheduling and predictive analytics, artificial intelligence is transforming how events are planned, promoted, and measured. Explore 25 strategies to plan smarter.</div>
+      <a class="card-link" href="https://time.ly/blog/clever-ways-to-use-artificial-intelligence-ai-in-events/" target="_blank">time.ly/blog/clever-ways-to-use-artificial-intelligence-ai-in-events</a>
+      <div class="hashtags" contenteditable="true" data-edit-id="ai-tags">#AIinEvents #EventTech #EventPlanning #Time.ly</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="images/venue-glossary.jpg" alt="Venue Management Glossary">
+    <div class="card-body">
+      <span class="badge">Blog</span>
+      <div class="card-title" contenteditable="true" data-edit-id="vg-title">📖 Venue Management Glossary</div>
+      <div class="card-text" contenteditable="true" data-edit-id="vg-text">Capacity, BEO, changeover, space utilization... speak the language of venue pros! Explore our glossary of key venue definitions and terms to communicate clearly and manage operations with confidence.</div>
+      <a class="card-link" href="https://time.ly/blog/venue-management-glossary-key-venue-definitions-terms/" target="_blank">time.ly/blog/venue-management-glossary-key-venue-definitions-terms</a>
+      <div class="hashtags" contenteditable="true" data-edit-id="vg-tags">#VenueManagement #EventPlanning #Glossary #Time.ly</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var STORAGE_KEY = 'smcEdits';
+  var saved;
+  try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e){ saved = {}; }
+
+  var editables = document.querySelectorAll('[data-edit-id]');
+  editables.forEach(function(el){
+    var id = el.getAttribute('data-edit-id');
+    if (saved[id] !== undefined) {
+      el.innerHTML = saved[id];
+    }
+    el.addEventListener('input', function(){
+      var current;
+      try { current = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e){ current = {}; }
+      current[id] = el.innerHTML;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(current));
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
